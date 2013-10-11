@@ -17,7 +17,7 @@ class vswitch::ovs(
         name        => $::vswitch::params::ovs_service_name,
         hasstatus   => false, # the supplied command returns true even if it's not running
         # Not perfect - should spot if either service is not running - but it'll do
-        status      => "/etc/init.d/openvswitch-switch status | fgrep 'is running'",
+        status      => "/etc/init.d/openvswitch-switch status | fgrep 'running'",
       }
       exec { 'rebuild-ovsmod':
         command     => "/usr/sbin/dpkg-reconfigure openvswitch-datapath-dkms > /tmp/reconf-log",
